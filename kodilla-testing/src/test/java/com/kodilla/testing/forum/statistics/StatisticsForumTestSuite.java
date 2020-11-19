@@ -34,73 +34,73 @@ public class StatisticsForumTestSuite {
     }
 
 
+    @Test
+    void test1() {
+        //Given
+        ForumStatistics statistics = new ForumStatistics(statisticsMock);
+        List<Integer> numberOfPostsList = numbersGenerator(0);
+        //when(statisticsMock.postsCount()).thenReturn(numberOfPostsList.size());
+        //When
+        int result = statistics.calculateAdvStatistics(statisticsMock);
+        //Then
+        assertEquals(0, result);
+    }
+    @Test
+    void test2() {
+        //Given
+        ForumStatistics statistics = new ForumStatistics(statisticsMock);
+        List<Integer> numberOfPostsList = numbersGenerator(1000);
+        when(statisticsMock.postsCount()).thenReturn(numberOfPostsList.size());
+        //When
+        int result = statistics.calculateAdvStatistics(statisticsMock);
+        //Then
+        assertEquals(1000, result);
+
+    }
+    @Test
+    void test3() {
+        //Given
+        ForumStatistics statistics = new ForumStatistics(statisticsMock);
+        List<Integer> ab = numbersGenerator(0);
+        when(statisticsMock.commentsCount()).thenReturn(ab.size());
+        //When
+        int result = statistics.calculateAdvStatistics(statisticsMock);
+        //Then
+        assertEquals(0, result);
+    }
 //    @Test
-//    void test1() {
+//    void test4() {
 //        //Given
-//        ForumStatistics statistics = new ForumStatistics(statisticsMock);
-//        List<Integer> numberOfPostsList = numbersGenerator(0);
-//        when(statisticsMock.postsCount()).thenReturn(numberOfPostsList.size());
 //        //When
-//        int result = statistics.calculateAdvStatistics(statisticsMock);
 //        //Then
-//        assertEquals(0, result);
 //    }
 //    @Test
-//    void test2() {
+//    void test5() {
 //        //Given
-//        ForumStatistics statistics = new ForumStatistics(statisticsMock);
-//        List<Integer> numberOfPostsList = numbersGenerator(1000);
-//        when(statisticsMock.postsCount()).thenReturn(numberOfPostsList.size());
 //        //When
-//        int result = statistics.calculateAdvStatistics(statisticsMock);
 //        //Then
-//        assertEquals(1000, result);
-//
 //    }
-//    @Test
-//    void test3() {
-//        //Given
-//        ForumStatistics statistics = new ForumStatistics(statisticsMock);
-//        List<Integer> ab = numbersGenerator(10);
-//        when(statisticsMock.commentsCount()).thenReturn(ab.size());
-//        //When
-//        int result = statistics.calculateAdvStatistics(statisticsMock);
-//        //Then
-//        assertEquals(0, result);
-//    }
-////    @Test
-////    void test4() {
-////        //Given
-////        //When
-////        //Then
-////    }
-////    @Test
-////    void test5() {
-////        //Given
-////        //When
-////        //Then
-////    }
-//    @Test
-//    void test6() {
-//        //Given
-//        ForumStatistics statistics = new ForumStatistics(statisticsMock);
-//        List<String> listOfUser = new ArrayList<String>();
-//        //when(statisticsMock.usersNames()).thenReturn(listOfUser);
-//        //When
-//        int result = statistics.calculateAdvStatistics(statisticsMock);
-//        //Then
-//        assertEquals(0, result);
-//    }
-//    @Test
-//    void test7() {
-//        //Given
-//        ForumStatistics statistics = new ForumStatistics(statisticsMock);
-//        List<String> listOf100User = usersGenerator(100);
-//        when(statisticsMock.usersNames()).thenReturn(listOf100User);
-//        //When
-//        int result = statistics.calculateAdvStatistics(statisticsMock);
-//        //Then
-//        assertEquals(100, result);
-//
-//    }
+    @Test
+    void test6() {
+        //Given
+        ForumStatistics statistics = new ForumStatistics(statisticsMock);
+        List<String> listOfUser = new ArrayList<>();
+        when(statisticsMock.usersNames()).thenReturn(listOfUser);
+        //When
+        int result = statistics.calculateAdvStatistics(statisticsMock);
+        //Then
+        assertEquals(0, result);
+    }
+    @Test
+    void test7() {
+        //Given
+        ForumStatistics statistics = new ForumStatistics(statisticsMock);
+        List<String> listOf100User = usersGenerator(100);
+        when(statisticsMock.usersNames()).thenReturn(listOf100User);
+        //When
+        int result = statistics.usersNames().size();
+        //Then
+        assertEquals(100, result);
+
+    }
 }

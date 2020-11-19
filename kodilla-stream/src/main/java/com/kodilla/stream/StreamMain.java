@@ -9,6 +9,7 @@ import com.kodilla.stream.iterate.NumbersGenerator;
 import com.kodilla.stream.lambda.*;
 import com.kodilla.stream.person.People;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.*;
 
@@ -70,9 +71,10 @@ public class StreamMain {
         Forum forum = new Forum();
         Map<Integer, ForumUser> theResultMapOfUsers = forum.getUserList().stream()
                 .filter(forumUser -> forumUser.getSex() == ('M'))
-                .filter(forumUser -> forumUser.getDateOfBirth().getYear() <= 2000)
+                .filter(forumUser -> forumUser.ageControl() >= 20)
                 .filter(forumUser -> forumUser.getPostedPosts() >= 1)
                 .collect(Collectors.toMap(ForumUser::getUserId, forumUser -> forumUser));
+
 
         System.out.println("# elements: " + theResultMapOfUsers.size());
         theResultMapOfUsers.entrySet().stream()

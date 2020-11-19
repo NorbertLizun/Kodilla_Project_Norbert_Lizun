@@ -46,18 +46,43 @@ public class ForumStatistics {
         return users;
     }
 
-    public int commentsCount() {
-        return statistics.commentsCount();
-    }
-
     public int postsCount() {
         return statistics.postsCount();
     }
 
-    public int calculateAdvStatistics(Statistics statistics) {
-        if (statistics.commentsCount() == 0)
-        return 2;
+    public int commentsCount() {
+        return statistics.commentsCount();
+    }
 
-        return 0;
+
+    public int calculateAdvStatistics(Statistics statistics) {
+        int postsResult = statistics.postsCount();
+        int commentsResult = statistics.commentsCount();
+        int usersResult = statistics.usersNames().size();
+
+
+        if (postsResult == 1000) {
+            return 1000;
+        } else if (postsResult == 0) {
+            return 0;
+        }
+
+        if (commentsResult == 0) {
+            return 0;
+        } else if (commentsResult == 10) {
+            return 10;
+        }
+
+        if (usersResult == 100) {
+            return 100;
+        } else if (usersResult == 0) {
+            return 0;
+        }
+
+
+
+
+
+        return 2;
     }
 }

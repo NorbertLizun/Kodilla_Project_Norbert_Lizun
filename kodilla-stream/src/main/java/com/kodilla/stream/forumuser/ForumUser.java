@@ -1,6 +1,6 @@
 package com.kodilla.stream.forumuser;
 
-import java.time.LocalDate;
+import java.time.*;
 
 public final class ForumUser {
     private final int userId;
@@ -32,6 +32,13 @@ public final class ForumUser {
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
+    }
+
+    public int ageControl() {
+        LocalDate today = LocalDate.now();
+        LocalDate dateOfBirth = getDateOfBirth();
+        int age = Period.between(dateOfBirth, today).getYears();
+        return age;
     }
 
     public int getPostedPosts() {
