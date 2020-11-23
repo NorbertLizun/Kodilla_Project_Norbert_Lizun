@@ -8,7 +8,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.*;
 
+import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -17,90 +19,33 @@ public class StatisticsForumTestSuite {
     @Mock
     private Statistics statisticsMock;
 
-    private List<Integer> numbersGenerator(int howMany) {
-        List<Integer> resultList = new ArrayList<>();
-        for (int n = 1; n <= howMany; n++) {
-            resultList.add(n);
-        }
-        return resultList;
-    }
-
-    private List<String> usersGenerator(int howMany) {
-        List<String> resultList = new ArrayList<>();
-        for (int n = 1; n <= howMany; n++) {
-            resultList.add("x" + n);
-        }
-        return resultList;
-    }
-
+    /*
+    gdy liczba postów = 0,
+    gdy liczba postów = 1000,
+    gdy liczba komentarzy = 0,
+    gdy liczba komentarzy < liczba postów,
+    gdy liczba komentarzy > liczba postów,
+    gdy liczba użytkowników = 0,
+    gdy liczba użytkowników = 100.
+     */
 
     @Test
-    void test1() {
+    void calulateForumStatsWhenPostsCountIs0() {
         //Given
-        ForumStatistics statistics = new ForumStatistics(statisticsMock);
-        List<Integer> numberOfPostsList = numbersGenerator(0);
-        //when(statisticsMock.postsCount()).thenReturn(numberOfPostsList.size());
+        ForumStatistics statistic = new ForumStatistics();
+        when(statisticsMock.usersNames()).thenReturn(asList("abc", "bbb"));
+        when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.commentsCount()).thenReturn(100);
         //When
-        int result = statistics.calculateAdvStatistics(statisticsMock);
-        //Then
-        assertEquals(0, result);
-    }
-    @Test
-    void test2() {
-        //Given
-        ForumStatistics statistics = new ForumStatistics(statisticsMock);
-        List<Integer> numberOfPostsList = numbersGenerator(1000);
-        when(statisticsMock.postsCount()).thenReturn(numberOfPostsList.size());
-        //When
-        int result = statistics.calculateAdvStatistics(statisticsMock);
-        //Then
-        assertEquals(1000, result);
+        statistic.calculateAdvStatistics(statisticsMock);
 
-    }
-    @Test
-    void test3() {
-        //Given
-        ForumStatistics statistics = new ForumStatistics(statisticsMock);
-        List<Integer> ab = numbersGenerator(0);
-        when(statisticsMock.commentsCount()).thenReturn(ab.size());
-        //When
-        int result = statistics.calculateAdvStatistics(statisticsMock);
         //Then
-        assertEquals(0, result);
+        assertEquals(0, statistic.getPostsQuantity());
+        assertEquals(100, statistic.getCommentsQuantity());
+        assertEquals(2, statistic.getUsersQuantity());
+        assertEquals(0, statistic.getPostsAverageNumberPerUser());
+        assertEquals(50, statistic.getCommentsAverageNumberPerUser());
+        assertEquals(0, statistic.getCommentsAverageNumberPerPost());
     }
-//    @Test
-//    void test4() {
-//        //Given
-//        //When
-//        //Then
-//    }
-//    @Test
-//    void test5() {
-//        //Given
-//        //When
-//        //Then
-//    }
-    @Test
-    void test6() {
-        //Given
-        ForumStatistics statistics = new ForumStatistics(statisticsMock);
-        List<String> listOfUser = new ArrayList<>();
-        when(statisticsMock.usersNames()).thenReturn(listOfUser);
-        //When
-        int result = statistics.calculateAdvStatistics(statisticsMock);
-        //Then
-        assertEquals(0, result);
-    }
-    @Test
-    void test7() {
-        //Given
-        ForumStatistics statistics = new ForumStatistics(statisticsMock);
-        List<String> listOf100User = usersGenerator(100);
-        when(statisticsMock.usersNames()).thenReturn(listOf100User);
-        //When
-        int result = statistics.usersNames().size();
-        //Then
-        assertEquals(100, result);
 
-    }
 }

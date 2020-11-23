@@ -1,20 +1,12 @@
 package com.kodilla.testing.forum.statistics;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ForumStatistics {
     private int usersQuantity;
     private int postsQuantity;
     private int commentsQuantity;
     private double postsAverageNumberPerUser;
     private double commentsAverageNumberPerUser;
-    private double postsAverageNumberPerPost;
-    private Statistics statistics;
-
-    public ForumStatistics(Statistics statistics) {
-        this.statistics = statistics;
-    }
+    private double commentsAverageNumberPerPost;
 
     public int getUsersQuantity() {
         return usersQuantity;
@@ -36,53 +28,29 @@ public class ForumStatistics {
         return commentsAverageNumberPerUser;
     }
 
-    public double getPostsAverageNumberPerPost() {
-        return postsAverageNumberPerPost;
+    public double getCommentsAverageNumberPerPost() {
+        return commentsAverageNumberPerPost;
     }
 
-    public List<String> usersNames() {
-        List<String> users;
-        users = statistics.usersNames();
-        return users;
-    }
+    public void calculateAdvStatistics(Statistics statistics) {
+        usersQuantity = statistics.usersNames().size();
+        postsQuantity = statistics.postsCount();
+        commentsQuantity = statistics.commentsCount();
 
-    public int postsCount() {
-        return statistics.postsCount();
-    }
-
-    public int commentsCount() {
-        return statistics.commentsCount();
-    }
-
-
-    public int calculateAdvStatistics(Statistics statistics) {
-        int postsResult = statistics.postsCount();
-        int commentsResult = statistics.commentsCount();
-        int usersResult = statistics.usersNames().size();
-
-
-        if (postsResult == 1000) {
-            return 1000;
-        } else if (postsResult == 0) {
-            return 0;
+        if(usersQuantity == 0) {
+            postsAverageNumberPerUser = 0;
+            commentsAverageNumberPerUser = 0;
+        } else {
+            postsAverageNumberPerUser = postsQuantity / (double)usersQuantity;
+            commentsAverageNumberPerUser = commentsQuantity / (double)usersQuantity;
         }
 
-        if (commentsResult == 0) {
-            return 0;
-        } else if (commentsResult == 10) {
-            return 10;
-        }
-
-        if (usersResult == 100) {
-            return 100;
-        } else if (usersResult == 0) {
-            return 0;
+        if(postsQuantity == 0) {
+            commentsAverageNumberPerPost = 0;
+        } else {
+            commentsAverageNumberPerPost = commentsQuantity / (double)postsQuantity;
         }
 
 
-
-
-
-        return 2;
     }
 }
