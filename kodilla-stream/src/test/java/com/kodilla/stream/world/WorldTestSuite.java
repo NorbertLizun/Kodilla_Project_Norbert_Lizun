@@ -47,7 +47,7 @@ public class WorldTestSuite {
 
 
         //Then
-        BigDecimal expectedSand = new BigDecimal("535615753");
-        assertEquals(expectedSand, totalQuantityOfPeople);
+        BigDecimal expectedQuantityOfPeople = new BigDecimal("535615753");
+        assertEquals(expectedQuantityOfPeople, totalQuantityOfPeople);
     }
 }
