@@ -99,7 +99,7 @@ public class BoardTestSuite {
                 .reduce(0L, (sum, current) -> sum += current);
 
 
-        double average = taskSum/taskCount;
+        double average = taskSum/(double)taskCount;
 
 
         //Then
