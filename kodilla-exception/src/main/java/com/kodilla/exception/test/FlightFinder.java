@@ -5,19 +5,27 @@ import java.util.Map;
 
 public class FlightFinder {
 
-    public void findFilght(Flight flight) throws RouteNotFoundException {
+    public boolean findFilght(Flight flight) throws RouteNotFoundException {
 
-        Map<String, Boolean> theMap = new HashMap<>();
-            theMap.put("Luton International Airport", true);
-            theMap.put("Heathrow", true);
-            theMap.put("Gatwick", true);
+        final Map<String, Boolean> theMap = new HashMap<>();
+        theMap.put("Lotnisko1", true);
+        theMap.put("Lotnisko2", true);
+        theMap.put("Lotnisko3", true);
+        theMap.put("Lotnisko4", false);
+        theMap.put("Lotnisko5", true);
 
-        if (theMap.containsKey(flight.getArrivalAirport())) {
+        String departureAirport = flight.getDepartureAirport();
+        String arrivalAirport = flight.getArrivalAirport();
+
+        if (theMap.containsKey(departureAirport) && theMap.containsKey(arrivalAirport)) {
             System.out.println(flight);
+            return true;
         } else {
-            throw new RouteNotFoundException("Brak Połączenia");
+            throw new RouteNotFoundException();
         }
-
 
     }
 }
+
+
+
