@@ -19,7 +19,7 @@ public class FlightFinder {
 
         if (theMap.containsKey(departureAirport) && theMap.containsKey(arrivalAirport)) {
             System.out.println(flight);
-            return true;
+            return theMap.get(arrivalAirport);
         } else {
             throw new RouteNotFoundException();
         }
