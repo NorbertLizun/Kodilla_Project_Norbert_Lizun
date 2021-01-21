@@ -4,8 +4,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        MovieStore movieStore = new MovieStore();
 
-        movieStore.getAllMovie();
+        PurchaseRequestRetriever purchaseRequestRetriever = new PurchaseRequestRetriever();
+        PurchaseRequest purchaseRequest = purchaseRequestRetriever.retrieve();
+        ProductOrderService productOrderService = new ProductOrderService(new SendInfoMail(), new Shop(), new SaveData());
+        productOrderService.process(purchaseRequest);
+
+
+
+
+
     }
 }
