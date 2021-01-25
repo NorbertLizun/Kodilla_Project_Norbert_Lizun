@@ -3,12 +3,12 @@ package com.kodilla.good.patterns.challenges;
 public class PurchaseDto {
 
     public User user;
-    public boolean isPurchased;
+    public boolean isOrdered;
 
-    public PurchaseDto(final User user, final boolean isPurchased) {
+    public PurchaseDto(final User user, final boolean isOrdered) {
 
         this.user = user;
-        this.isPurchased = isPurchased;
+        this.isOrdered = isOrdered;
 
     }
 
@@ -16,7 +16,7 @@ public class PurchaseDto {
         return user;
     }
 
-    public boolean isPurchased() {
-        return isPurchased;
+    public boolean isOrdered() {
+        return isOrdered;
     }
 }

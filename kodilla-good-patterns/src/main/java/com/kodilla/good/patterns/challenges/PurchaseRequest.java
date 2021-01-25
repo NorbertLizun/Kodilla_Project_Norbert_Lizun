@@ -30,13 +30,5 @@ public class PurchaseRequest {
         return deliveryTime;
     }
 
-    @Override
-    public String toString() {
-        return "PurchaseRequest{" +
-                "user=" + user +
-                ", item=" + item +
-                ", deliveryPlace='" + deliveryPlace + '\'' +
-                ", deliveryTime=" + deliveryTime +
-                '}';
-    }
+
 }
