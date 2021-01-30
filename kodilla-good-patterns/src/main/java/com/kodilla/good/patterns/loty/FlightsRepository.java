@@ -3,11 +3,11 @@ package com.kodilla.good.patterns.loty;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllFlights {
+public class FlightsRepository {
     private List <Flight> allFlights = new ArrayList<>();
 
 
-    public void addFlights() {
+    public FlightsRepository() {
         allFlights.add(new Flight("GDANSK", "WROCLAW"));
         allFlights.add(new Flight("GDANSK", "WARSZAWA"));
         allFlights.add(new Flight("WARSZAWA", "WROCLAW"));

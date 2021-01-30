@@ -105,7 +105,7 @@ public class BoardTestSuite {
         //Then
         assertEquals(3, taskCount);
         assertEquals(55, taskSum);
-        assertEquals(18.0, average);
+        assertEquals(18.333333333333332, average);
     }
 
     private Board prepareTestData() {
