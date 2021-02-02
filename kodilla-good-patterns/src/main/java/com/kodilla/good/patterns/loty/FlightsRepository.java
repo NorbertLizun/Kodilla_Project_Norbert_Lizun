@@ -10,9 +10,9 @@ public class FlightsRepository {
     public FlightsRepository() {
         allFlights.add(new Flight("GDANSK", "WROCLAW"));
         allFlights.add(new Flight("GDANSK", "WARSZAWA"));
-        allFlights.add(new Flight("WARSZAWA", "WROCLAW"));
-        allFlights.add(new Flight("WARSZAWA", "WROCLAW"));
-        allFlights.add(new Flight("WROCLAW", "POZNAN"));
+        allFlights.add(new Flight("WARSZAWA", "KALISZ"));
+        allFlights.add(new Flight("KALISZ", "GDANSK"));
+        allFlights.add(new Flight("WROCLAW", "SZCZECIN"));
     }
 
     public List<Flight> getAllFlights() {

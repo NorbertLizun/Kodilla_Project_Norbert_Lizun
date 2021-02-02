@@ -2,6 +2,7 @@ package com.kodilla.good.patterns.loty;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,36 +25,52 @@ public class SearchForFlights {
                 .filter(n -> n.getArrival().equals(arrival))
                 .collect(Collectors.toList());
 
+
     }
 
-    public List<List <Flight>> findFlightThrough(String departure, String arrival) {
+    public void findFlightThrough(String departure, String arrival) {
 
         List<Flight> flightsFrom = findFlightFrom(departure);
         List<Flight> flightsTo = findFlightTo(arrival);
+
 
         List<Flight> flightsIndirect = flightsFrom
                 .stream()
                 .filter(n -> flightsTo.contains(new Flight(n.getArrival(), arrival)))
                 .collect(Collectors.toList());
 
+        List<Flight> flightsTester = flightsTo
+                .stream()
+                .filter(n -> flightsFrom.contains(new Flight(n.getDeparture(), departure)))
+                .collect(Collectors.toList());
+
 
         List<List<Flight>> connectList = new ArrayList<>();
-
-
-        for (Flight flight : flightsIndirect) {
-
             List<Flight> flights = new ArrayList<>();
-            flights.add(flight);
-            flightsTo.stream()
-                    .filter(n -> flight.getArrival().equals(n.getDeparture()))
-                    .forEach(flights::add);
-
-            connectList.add(flights);
 
 
-        }
+            flights.addAll(flightsIndirect);
 
-        return connectList;
+            List<Flight> secondFlight = flightsTo.stream()
+                    .filter(n -> n.getArrival().equals(arrival))
+                    .collect(Collectors.toList());
+
+
+            flightsTester.addAll(flights);
+            flightsTester.addAll(secondFlight);
+
+            connectList.add(flightsTester);
+
+
+
+
+
+        System.out.println(connectList);
+
+
+
+
+
 
 
 
