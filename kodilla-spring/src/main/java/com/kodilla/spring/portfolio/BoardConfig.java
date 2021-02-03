@@ -3,6 +3,7 @@ package com.kodilla.spring.portfolio;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 import java.util.ArrayList;
 
@@ -15,23 +16,16 @@ public class BoardConfig {
 
     @Bean
     public Board getBoard() {
-        return new Board(getToDoList(),getInProgress(),getDoneList());
+        return new Board(getList(),getList(),getList());
     }
 
     @Bean
-    public TaskList getToDoList() {
+    @Scope("prototype")
+    public TaskList getList() {
         return new TaskList(new ArrayList<>());
     }
 
-    @Bean
-    public TaskList getInProgress() {
-        return new TaskList(new ArrayList<>());
-    }
 
-    @Bean
-    public TaskList getDoneList() {
-        return new TaskList(new ArrayList<>());
-    }
 
 
 
