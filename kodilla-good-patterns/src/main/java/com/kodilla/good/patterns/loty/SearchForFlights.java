@@ -28,7 +28,7 @@ public class SearchForFlights {
 
     }
 
-    public void findFlightThrough(String departure, String arrival) {
+    public List<List<Flight>> findFlightThrough(String departure, String arrival) {
 
         List<Flight> flightsFrom = findFlightFrom(departure);
         List<Flight> flightsTo = findFlightTo(arrival);
@@ -62,23 +62,7 @@ public class SearchForFlights {
             connectList.add(flightsTester);
 
 
-
-
-
-        System.out.println(connectList);
-
-
-
-
-
-
-
-
-
-
-
-
-
+            return connectList;
 
 
     }

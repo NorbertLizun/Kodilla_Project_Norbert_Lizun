@@ -5,12 +5,11 @@ public class Main {
 
 
         SearchForFlights searchForFlights = new SearchForFlights();
-        searchForFlights.findFlightFrom("GDANSK");
+        System.out.println(searchForFlights.findFlightFrom("GDANSK"));
         System.out.println("------------------------");
-        searchForFlights.findFlightTo("WROCLAW");
+        System.out.println(searchForFlights.findFlightTo("WROCLAW"));
         System.out.println("------------------------");
-        searchForFlights.findFlightThrough("WARSZAWA",  "GDANSK");
-
+        System.out.println(searchForFlights.findFlightThrough("WARSZAWA", "GDANSK"));
 
 
     }
