@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'com.kodilla'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.3'
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.6.0'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
+
+}
+
+test {
+    useJUnitPlatform()
+}
