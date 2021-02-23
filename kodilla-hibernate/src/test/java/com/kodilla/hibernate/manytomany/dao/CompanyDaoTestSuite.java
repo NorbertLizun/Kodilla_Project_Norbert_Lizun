@@ -6,13 +6,20 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
 public class CompanyDaoTestSuite {
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Autowired
     private CompanyDao companyDao;
+
+
 
     @Test
     void testSaveManyToMany() {
@@ -45,18 +52,23 @@ public class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
 
+        List<Employee> findEmpByLastNameList =  employeeDao.retrieveEmployeesByLastName("Smith");
+        List<Company> tester = companyDao.retrieveCompanyByFirstThreeLetters("sof");
+
         //Then
         assertNotEquals(0, softwareMachineId);
         assertNotEquals(0, dataMaestersId);
         assertNotEquals(0, greyMatterId);
+        assertEquals(1, findEmpByLastNameList.size());
+        assertEquals(1, tester.size());
 
         //CleanUp
-        //try {
-        //    companyDao.deleteById(softwareMachineId);
-        //    companyDao.deleteById(dataMaestersId);
-        //    companyDao.deleteById(greyMatterId);
-        //} catch (Exception e) {
-        //    //do nothing
-        //}
+        try {
+            companyDao.deleteById(softwareMachineId);
+            companyDao.deleteById(dataMaestersId);
+            companyDao.deleteById(greyMatterId);
+        } catch (Exception e) {
+            //do nothing
+        }
     }
 }
