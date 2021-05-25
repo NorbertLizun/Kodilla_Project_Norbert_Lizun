@@ -12,6 +12,13 @@ import java.util.List;
         resultClass = Company.class
 )
 
+@NamedQuery(
+        name = "Company.retrieveCompanyByNameFragment",
+        query =  "FROM Company " +
+                "WHERE name LIKE :NAME_FRAGMENT "
+)
+
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
