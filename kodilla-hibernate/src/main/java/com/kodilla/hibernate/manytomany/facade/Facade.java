@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.kodilla.hibernate.manytomany.facade.Condition.sqlCondition;
 
 @Service
 public class Facade {
@@ -22,11 +21,11 @@ public class Facade {
         EmployeeDao employeeDao;
 
         public List<Company> searchCompanyByNameFrament(String nameFragment){
-            return companyDao.retrieveCompanyByNameFragment(sqlCondition(nameFragment));
+            return companyDao.retrieveCompanyByNameFragment(nameFragment);
         }
 
         public List<Employee> searchEmployeeByFragment(String lastNameFragment) {
-            return employeeDao.retrieveEmployeesByLastnameFragment(sqlCondition(lastNameFragment));
+            return employeeDao.retrieveEmployeesByLastnameFragment(lastNameFragment);
         }
     }
 

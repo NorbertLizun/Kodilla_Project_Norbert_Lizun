@@ -28,9 +28,11 @@ public class FacadeTestSuite {
     @Test
     public void getCompanyByNameFragment() {
         //Given
-        Company company1 = new Company("ABCDEFG");
-        Company company2 = new Company("OKSLCDEO");
-        Company company3 = new Company("POKDECMS");
+        Company company1 = new Company("ABCDEEFG");
+        Company company2 = new Company("OKSLCDEEO");
+        Company company3 = new Company("POKDEECMS");
+
+        companyDao.deleteAll();
 
         //When
         companyDao.save(company1);
@@ -41,7 +43,7 @@ public class FacadeTestSuite {
         int company3ID = company3.getId();
 
         //Then
-        assertEquals(1, facade.searchCompanyByNameFrament("CDE").size());
+        assertEquals(3, facade.searchCompanyByNameFrament("EE").size());
 
         //Clean
         try {
