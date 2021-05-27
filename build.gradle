@@ -17,6 +17,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    compile 'org.springframework.boot:spring-boot-starter-aop:2.5.0'
+
 }
 
 test {

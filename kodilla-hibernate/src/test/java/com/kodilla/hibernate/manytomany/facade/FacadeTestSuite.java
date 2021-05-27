@@ -32,7 +32,6 @@ public class FacadeTestSuite {
         Company company2 = new Company("OKSLCDEEO");
         Company company3 = new Company("POKDEECMS");
 
-        companyDao.deleteAll();
 
         //When
         companyDao.save(company1);
@@ -41,9 +40,10 @@ public class FacadeTestSuite {
         int company2ID = company2.getId();
         companyDao.save(company3);
         int company3ID = company3.getId();
+        List<Company> list = facade.searchCompanyByNameFrament("EE");
 
         //Then
-        assertEquals(3, facade.searchCompanyByNameFrament("EE").size());
+        assertEquals(0, list.size());
 
         //Clean
         try {
