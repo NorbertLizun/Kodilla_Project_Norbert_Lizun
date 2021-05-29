@@ -10,10 +10,11 @@ import java.util.List;
         query = "FROM Employee WHERE lastname = :LASTNAME"
 )
 
-@NamedQuery(
+@NamedNativeQuery(
         name = "Employee.retrieveEmployeesByLastnameFragment",
-        query =  "FROM Employee " +
-                "WHERE lastname LIKE :LASTNAME_FRAGMENT "
+        query =  "SELECT * FROM EMPLOYEES " +
+                "WHERE lastname LIKE CONCAT('%',:LASTNAME_FRAGMENT,'%')",
+        resultClass = Employee.class
 )
 
 @Entity

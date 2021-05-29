@@ -15,10 +15,10 @@ import java.util.List;
 @NamedNativeQuery(
         name = "Company.retrieveCompanyByNameFragment",
         query =  "SELECT * FROM COMPANIES " +
-                "WHERE COMPANY_NAME LIKE CONCAT('%',:nameFragment,'%')"
+                "WHERE COMPANY_NAME LIKE CONCAT('%',:NAME_FRAGMENT,'%')",
+        resultClass = Company.class
 )
 
-//LIKE CONCAT('%',nameFragment,'%')
 
 @Entity
 @Table(name = "COMPANIES")

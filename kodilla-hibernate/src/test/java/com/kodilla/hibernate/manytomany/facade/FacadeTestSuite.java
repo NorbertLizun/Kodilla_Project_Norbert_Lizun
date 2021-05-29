@@ -40,19 +40,15 @@ public class FacadeTestSuite {
         int company2ID = company2.getId();
         companyDao.save(company3);
         int company3ID = company3.getId();
-        List<Company> list = facade.searchCompanyByNameFrament("EE");
 
         //Then
-        assertEquals(0, list.size());
+        assertEquals(3, facade.searchCompanyByNameFrament("EE").size());
 
         //Clean
-        try {
             companyDao.deleteById(company1ID);
             companyDao.deleteById(company2ID);
             companyDao.deleteById(company3ID);
-        } catch (Exception e) {
-
-        }
+       
     }
 
     @Test
@@ -75,12 +71,9 @@ public class FacadeTestSuite {
         assertEquals(2, companies.size());
 
         //Clean
-        try {
-            employeeDao.deleteById(employee1Id);
-            employeeDao.deleteById(employee2Id);
-            employeeDao.deleteById(employee3Id);
-        } catch (Exception e) {
+        employeeDao.deleteById(employee1Id);
+        employeeDao.deleteById(employee2Id);
+        employeeDao.deleteById(employee3Id);
 
-        }
     }
 }
